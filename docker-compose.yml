@@ -1,0 +1,10 @@
+
+services:
+  db:
+    image: postgis/postgis:15-3.3
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: root
+      POSTGRES_DB: petradar
+    ports:
+      - "5432:5432"
