@@ -5,7 +5,8 @@ WORKDIR /app
 
 # Install dependencies
 COPY package.json pnpm-lock.yaml ./
-RUN npm install -g pnpm && pnpm install --frozen-lockfile
+ENV PNPM_SKIP_CHECK_BROKEN_LOCKFILE=true
+RUN npm install -g pnpm && pnpm install --prod --frozen-lockfile --ignore-scripts
 
 # Copy source code
 COPY . .
@@ -23,7 +24,7 @@ RUN apk add --no-cache dumb-init
 
 # Install only production dependencies
 COPY package.json pnpm-lock.yaml ./
-RUN npm install -g pnpm && pnpm install --prod --frozen-lockfile
+RUN npm install -g pnpm && pnpm install --prod --frozen-lockfile --only=built
 
 # Copy built application from builder
 COPY --from=builder /app/dist ./dist
