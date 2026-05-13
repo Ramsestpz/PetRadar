@@ -5,8 +5,7 @@ WORKDIR /app
 
 # Install dependencies
 COPY package.json pnpm-lock.yaml ./
-# Forzamos a pnpm a ignorar los scripts conflictivos desde la configuración
-RUN npm install -g pnpm && pnpm config set ignore-scripts true && pnpm install --frozen- 
+RUN npm install -g pnpm && pnpm config set ignore-scripts true && pnpm install --frozen-lockfile
 
 # Copy source code
 COPY . .
@@ -24,7 +23,6 @@ RUN apk add --no-cache dumb-init
 
 # Install only production dependencies
 COPY package.json pnpm-lock.yaml ./
-# Aplicamos la misma configuración estricta para la etapa de producción
 RUN npm install -g pnpm && pnpm config set ignore-scripts true && pnpm install --prod --frozen-lockfile
 
 # Copy built application from builder
