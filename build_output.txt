@@ -1,0 +1,213 @@
+
+> pet-radar-api@0.0.1 build C:\Users\tepoz\Documents\pet-radar-api
+> nest build
+
+src/pets/pets.service.ts:125:11 - error TS1068: Unexpected token. A constructor, method, accessor, or property was expected.
+
+125           </div>
+              ~
+src/pets/pets.service.ts:125:12 - error TS1110: Type expected.
+
+125           </div>
+               ~
+src/pets/pets.service.ts:126:10 - error TS1161: Unterminated regular expression literal.
+
+126         </div>
+             ~~~~~
+src/pets/pets.service.ts:128:10 - error TS2304: Cannot find name 'div'.
+
+128         <div style="background-color: #f0f0f0; color: #767676; text-align: center; padding: 15px; font-size: 12px;">
+             ~~~
+src/pets/pets.service.ts:128:14 - error TS1005: ';' expected.
+
+128         <div style="background-color: #f0f0f0; color: #767676; text-align: center; padding: 15px; font-size: 12px;">
+                 ~~~~~
+src/pets/pets.service.ts:128:14 - error TS2304: Cannot find name 'style'.
+
+128         <div style="background-color: #f0f0f0; color: #767676; text-align: center; padding: 15px; font-size: 12px;">
+                 ~~~~~
+src/pets/pets.service.ts:129:11 - error TS2304: Cannot find name 'Este'.
+
+129           Este es un mensaje autom├ítico de la API de PetRadar.<br>
+              ~~~~
+src/pets/pets.service.ts:129:16 - error TS1005: ';' expected.
+
+129           Este es un mensaje autom├ítico de la API de PetRadar.<br>
+                   ~~
+src/pets/pets.service.ts:129:16 - error TS2304: Cannot find name 'es'.
+
+129           Este es un mensaje autom├ítico de la API de PetRadar.<br>
+                   ~~
+src/pets/pets.service.ts:129:19 - error TS1434: Unexpected keyword or identifier.
+
+129           Este es un mensaje autom├ítico de la API de PetRadar.<br>
+                      ~~
+src/pets/pets.service.ts:129:19 - error TS2304: Cannot find name 'un'.
+
+129           Este es un mensaje autom├ítico de la API de PetRadar.<br>
+                      ~~
+src/pets/pets.service.ts:129:22 - error TS1434: Unexpected keyword or identifier.
+
+129           Este es un mensaje autom├ítico de la API de PetRadar.<br>
+                         ~~~~~~~
+src/pets/pets.service.ts:129:22 - error TS2304: Cannot find name 'mensaje'.
+
+129           Este es un mensaje autom├ítico de la API de PetRadar.<br>
+                         ~~~~~~~
+src/pets/pets.service.ts:129:30 - error TS1434: Unexpected keyword or identifier.
+
+129           Este es un mensaje autom├ítico de la API de PetRadar.<br>
+                                 ~~~~~~~~~~
+src/pets/pets.service.ts:129:30 - error TS2304: Cannot find name 'autom├ítico'.
+
+129           Este es un mensaje autom├ítico de la API de PetRadar.<br>
+                                 ~~~~~~~~~~
+src/pets/pets.service.ts:129:41 - error TS1434: Unexpected keyword or identifier.
+
+129           Este es un mensaje autom├ítico de la API de PetRadar.<br>
+                                            ~~
+src/pets/pets.service.ts:129:41 - error TS2304: Cannot find name 'de'.
+
+129           Este es un mensaje autom├ítico de la API de PetRadar.<br>
+                                            ~~
+src/pets/pets.service.ts:129:44 - error TS1434: Unexpected keyword or identifier.
+
+129           Este es un mensaje autom├ítico de la API de PetRadar.<br>
+                                               ~~
+src/pets/pets.service.ts:129:44 - error TS2304: Cannot find name 'la'.
+
+129           Este es un mensaje autom├ítico de la API de PetRadar.<br>
+                                               ~~
+src/pets/pets.service.ts:129:47 - error TS1434: Unexpected keyword or identifier.
+
+129           Este es un mensaje autom├ítico de la API de PetRadar.<br>
+                                                  ~~~
+src/pets/pets.service.ts:129:47 - error TS2304: Cannot find name 'API'.
+
+129           Este es un mensaje autom├ítico de la API de PetRadar.<br>
+                                                  ~~~
+src/pets/pets.service.ts:129:51 - error TS1434: Unexpected keyword or identifier.
+
+129           Este es un mensaje autom├ítico de la API de PetRadar.<br>
+                                                      ~~
+src/pets/pets.service.ts:129:51 - error TS2304: Cannot find name 'de'.
+
+129           Este es un mensaje autom├ítico de la API de PetRadar.<br>
+                                                      ~~
+src/pets/pets.service.ts:129:54 - error TS2304: Cannot find name 'PetRadar'.
+
+129           Este es un mensaje autom├ítico de la API de PetRadar.<br>
+                                                         ~~~~~~~~
+src/pets/pets.service.ts:129:63 - error TS1003: Identifier expected.
+
+129           Este es un mensaje autom├ítico de la API de PetRadar.<br>
+                                                                  ~
+src/pets/pets.service.ts:129:64 - error TS2304: Cannot find name 'br'.
+
+129           Este es un mensaje autom├ítico de la API de PetRadar.<br>
+                                                                   ~~
+src/pets/pets.service.ts:130:11 - error TS1127: Invalid character.
+
+130           ┬⌐ ${new Date().getFullYear()} PetRadar Inc.
+              ~
+src/pets/pets.service.ts:130:13 - error TS1434: Unexpected keyword or identifier.
+
+130           ┬⌐ ${new Date().getFullYear()} PetRadar Inc.
+                ~
+src/pets/pets.service.ts:130:13 - error TS2581: Cannot find name '$'. Do you need to install type definitions for jQuery? Try `npm i --save-dev @types/jquery`.
+
+130           ┬⌐ ${new Date().getFullYear()} PetRadar Inc.
+                ~
+src/pets/pets.service.ts:130:41 - error TS1434: Unexpected keyword or identifier.
+
+130           ┬⌐ ${new Date().getFullYear()} PetRadar Inc.
+                                            ~~~~~~~~
+src/pets/pets.service.ts:130:41 - error TS2304: Cannot find name 'PetRadar'.
+
+130           ┬⌐ ${new Date().getFullYear()} PetRadar Inc.
+                                            ~~~~~~~~
+src/pets/pets.service.ts:130:50 - error TS2304: Cannot find name 'Inc'.
+
+130           ┬⌐ ${new Date().getFullYear()} PetRadar Inc.
+                                                     ~~~
+src/pets/pets.service.ts:131:9 - error TS1003: Identifier expected.
+
+131         </div>
+            ~
+src/pets/pets.service.ts:131:10 - error TS1161: Unterminated regular expression literal.
+
+131         </div>
+             ~~~~~
+src/pets/pets.service.ts:132:8 - error TS1161: Unterminated regular expression literal.
+
+132       </div>
+           ~~~~~
+src/pets/pets.service.ts:132:8 - error TS2349: This expression is not callable.
+  Type 'RegExp' has no call signatures.
+
+132       </div>
+           ~~~~~
+src/pets/pets.service.ts:138:17 - error TS1127: Invalid character.
+
+138       subject: `┬íBuenas noticias! Posible coincidencia para ${lostPet.name} ≡ƒÉ╢`,
+                    ~
+src/pets/pets.service.ts:138:18 - error TS1434: Unexpected keyword or identifier.
+
+138       subject: `┬íBuenas noticias! Posible coincidencia para ${lostPet.name} ≡ƒÉ╢`,
+                     ~~~~~~
+src/pets/pets.service.ts:138:18 - error TS2304: Cannot find name 'Buenas'.
+
+138       subject: `┬íBuenas noticias! Posible coincidencia para ${lostPet.name} ≡ƒÉ╢`,
+                     ~~~~~~
+src/pets/pets.service.ts:138:25 - error TS2304: Cannot find name 'noticias'.
+
+138       subject: `┬íBuenas noticias! Posible coincidencia para ${lostPet.name} ≡ƒÉ╢`,
+                            ~~~~~~~~
+src/pets/pets.service.ts:138:35 - error TS1005: ';' expected.
+
+138       subject: `┬íBuenas noticias! Posible coincidencia para ${lostPet.name} ≡ƒÉ╢`,
+                                      ~~~~~~~
+src/pets/pets.service.ts:138:35 - error TS2304: Cannot find name 'Posible'.
+
+138       subject: `┬íBuenas noticias! Posible coincidencia para ${lostPet.name} ≡ƒÉ╢`,
+                                      ~~~~~~~
+src/pets/pets.service.ts:138:43 - error TS1434: Unexpected keyword or identifier.
+
+138       subject: `┬íBuenas noticias! Posible coincidencia para ${lostPet.name} ≡ƒÉ╢`,
+                                              ~~~~~~~~~~~~
+src/pets/pets.service.ts:138:43 - error TS2304: Cannot find name 'coincidencia'.
+
+138       subject: `┬íBuenas noticias! Posible coincidencia para ${lostPet.name} ≡ƒÉ╢`,
+                                              ~~~~~~~~~~~~
+src/pets/pets.service.ts:138:56 - error TS1434: Unexpected keyword or identifier.
+
+138       subject: `┬íBuenas noticias! Posible coincidencia para ${lostPet.name} ≡ƒÉ╢`,
+                                                           ~~~~
+src/pets/pets.service.ts:138:56 - error TS2304: Cannot find name 'para'.
+
+138       subject: `┬íBuenas noticias! Posible coincidencia para ${lostPet.name} ≡ƒÉ╢`,
+                                                           ~~~~
+src/pets/pets.service.ts:138:61 - error TS1434: Unexpected keyword or identifier.
+
+138       subject: `┬íBuenas noticias! Posible coincidencia para ${lostPet.name} ≡ƒÉ╢`,
+                                                                ~
+src/pets/pets.service.ts:138:61 - error TS2581: Cannot find name '$'. Do you need to install type definitions for jQuery? Try `npm i --save-dev @types/jquery`.
+
+138       subject: `┬íBuenas noticias! Posible coincidencia para ${lostPet.name} ≡ƒÉ╢`,
+                                                                ~
+src/pets/pets.service.ts:138:63 - error TS2304: Cannot find name 'lostPet'.
+
+138       subject: `┬íBuenas noticias! Posible coincidencia para ${lostPet.name} ≡ƒÉ╢`,
+                                                                  ~~~~~~~
+src/pets/pets.service.ts:138:77 - error TS1127: Invalid character.
+
+138       subject: `┬íBuenas noticias! Posible coincidencia para ${lostPet.name} ≡ƒÉ╢`,
+                                                                                ~~
+src/pets/pets.service.ts:144:2 - error TS1160: Unterminated template literal.
+
+144 }
+     
+
+Found 51 error(s).
+
+ΓÇëELIFECYCLEΓÇë Command failed with exit code 1.
