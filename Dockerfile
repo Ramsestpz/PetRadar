@@ -6,7 +6,7 @@ WORKDIR /app
 # Install dependencies
 COPY package.json pnpm-lock.yaml ./
 # Forzamos a pnpm a ignorar los scripts conflictivos desde la configuración
-RUN npm install -g pnpm && pnpm config set ignore-scripts true && pnpm install --frozen-lockfile
+RUN npm install -g pnpm && pnpm config set ignore-scripts true && pnpm install --frozen- 
 
 # Copy source code
 COPY . .
