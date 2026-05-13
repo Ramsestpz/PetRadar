@@ -64,6 +64,19 @@ export class PetsService {
     return { message: 'Mascota registrada', matches_found: matches.length };
   }
 
+  async getLostPets() {
+    return await this.lostPetRepo.find({
+      where: { is_active: true },
+      order: { created_at: 'DESC' },
+    });
+  }
+
+  async getFoundPets() {
+    return await this.foundPetRepo.find({
+      order: { created_at: 'DESC' },
+    });
+  }
+
   private async sendMatchEmail(lostPet: any, foundData: any) {
     const mapboxToken = process.env.MAPBOX_TOKEN; 
     const mapUrl = `https://api.mapbox.com/styles/v1/mapbox/streets-v11/static/pin-s-a+f00(${lostPet.lost_lng},${lostPet.lost_lat}),pin-s-b+00f(${foundData.lng},${foundData.lat})/auto/500x300?access_token=${mapboxToken}`;
