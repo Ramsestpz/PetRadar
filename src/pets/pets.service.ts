@@ -23,22 +23,45 @@ export class PetsService {
   }
 
   async createLostPet(data: any) {
-    // Se guarda el objeto tal cual, asumiendo que data ya incluye la estructura correcta
-    const pet = this.lostPetRepo.create(data);
+    // Mapeo explícito para asegurar que todos los campos requeridos existan
+    const pet = this.lostPetRepo.create({
+      name: data.name,
+      species: data.species,
+      breed: data.breed,
+      color: data.color,
+      size: data.size,
+      description: data.description,
+      owner_name: data.owner_name,
+      owner_email: data.owner_email,
+      owner_phone: data.owner_phone,
+      address: data.address,
+      lost_date: data.lost_date,
+      location: data.location, // Asegúrate que venga como { type: 'Point', coordinates: [lng, lat] }
+    });
     return await this.lostPetRepo.save(pet);
   }
 
   async createFoundPet(data: any) {
-    // 1. Guardar la mascota encontrada
-    const foundPet = this.foundPetRepo.create(data);
+    // 1. Guardar la mascota encontrada con mapeo explícito
+    const foundPet = this.foundPetRepo.create({
+      species: data.species,
+      breed: data.breed,
+      color: data.color,
+      size: data.size,
+      description: data.description,
+      finder_name: data.finder_name,
+      finder_email: data.finder_email,
+      finder_phone: data.finder_phone,
+      address: data.address,
+      location: data.location,
+    });
     await this.foundPetRepo.save(foundPet);
 
-    // 2. Extraer coordenadas de manera segura del objeto GeoJSON
-    // Esto evita que lleguen nulas a la consulta SQL
-    const lng = data.location?.coordinates[0];
-    const lat = data.location?.coordinates[1];
+    // 2. Extraer coordenadas del objeto GeoJSON
+    const lng = data.location.coordinates[0];
+    const lat = data.location.coordinates[1];
 
-    // 3. Buscar coincidencias usando las coordenadas extraídas
+    // 3. Buscar coincidencias
     const matches = await this.lostPetRepo.query(`
       SELECT *,
         ST_X(location::geometry) AS lost_lng,
@@ -57,7 +80,6 @@ export class PetsService {
       ORDER BY distance ASC;
     `, [lng, lat]);
 
-    // 4. Enviar notificación si hubo match
     if (matches.length > 0) {
       for (const lostPet of matches) {
         await this.sendMatchEmail(lostPet, data);
@@ -82,46 +104,24 @@ export class PetsService {
 
   private async sendMatchEmail(lostPet: any, foundData: any) {
     try {
-      const emailHtml = `
-        <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; border: 1px solid #e0e0e0; border-radius: 12px;">
-          <div style="background-color: #FF5A5F; color: white; padding: 25px 20px; text-align: center;">
-            <h1 style="margin: 0; font-size: 26px;">PetRadar Alert</h1>
-            <p style="margin: 5px 0 0 0; font-size: 16px; opacity: 0.9;">Possible match found!</p>
-          </div>
-
-          <div style="padding: 30px 20px; background-color: #ffffff;">
-            <p style="font-size: 16px; color: #484848; line-height: 1.6;">
-              Hello! The system has detected an animal nearby with similar characteristics.
-            </p>
-            
-            <div style="background-color: #f7f7f9; padding: 20px; border-radius: 10px; margin: 25px 0; border-left: 5px solid #00A699;">
-              <h3 style="margin-top: 0; color: #222222; font-size: 18px;">Finder Information:</h3>
-              <ul style="list-style: none; padding: 0; margin: 0; color: #484848; font-size: 15px; line-height: 1.8;">
-                <li><strong>Name:</strong> ${foundData.finder_name}</li>
-                <li><strong>Phone:</strong> ${foundData.finder_phone}</li>
-                <li><strong>Email:</strong> ${foundData.finder_email}</li>
-                <li><strong>Description:</strong> ${foundData.description}</li>
-              </ul>
-            </div>
-          </div>
-
-          <div style="background-color: #f0f0f0; color: #767676; text-align: center; padding: 15px; font-size: 12px;">
-            Automatic message from PetRadar API - ${new Date().getFullYear()}
-          </div>
-        </div>
-      `;
-
       const mailOptions = {
         from: '"PetRadar Notifications" <tepozramses@gmail.com>',
         to: lostPet.owner_email || 'tepozramses@gmail.com',
-        subject: 'Good news! Possible match found',
-        html: emailHtml,
+        subject: '¡Buenas noticias! Posible coincidencia encontrada',
+        html: `
+          <div style="font-family: sans-serif; padding: 20px;">
+            <h2>Posible coincidencia encontrada</h2>
+            <p>Se ha detectado una mascota encontrada cerca de tu ubicación.</p>
+            <ul>
+              <li><strong>Nombre del buscador:</strong> ${foundData.finder_name}</li>
+              <li><strong>Teléfono:</strong> ${foundData.finder_phone}</li>
+            </ul>
+          </div>
+        `,
       };
-
       await this.transporter.sendMail(mailOptions);
-      console.log(`Email sent to ${lostPet.owner_email}`);
     } catch (error) {
-      console.error('Error sending email:', error.message);
+      console.error('Error enviando email:', error.message);
     }
   }
 }
