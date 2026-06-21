@@ -19,7 +19,11 @@ export class LostPet {
   location: Point;
 
   @Column() address: string;
-  @Column('timestamp') lost_date: Date;
+  
+  // CORRECCIÓN: Valor por defecto para evitar errores null
+  @Column({ type: 'timestamp', default: () => 'CURRENT_TIMESTAMP' }) 
+  lost_date: Date;
+
   @Column({ default: true }) is_active: boolean;
   @CreateDateColumn() created_at: Date;
   @UpdateDateColumn() updated_at: Date;

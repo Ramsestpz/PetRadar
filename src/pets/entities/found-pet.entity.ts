@@ -18,7 +18,11 @@ export class FoundPet {
   location: Point;
 
   @Column() address: string;
-  @Column('timestamp') found_date: Date;
+  
+  // CORRECCIÓN: Valor por defecto para evitar errores null
+  @Column({ type: 'timestamp', default: () => 'CURRENT_TIMESTAMP' }) 
+  found_date: Date;
+
   @CreateDateColumn() created_at: Date;
   @UpdateDateColumn() updated_at: Date;
 }
