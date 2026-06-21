@@ -17,26 +17,28 @@ export class PetsService {
       service: 'gmail',
       auth: {
         user: 'tepozramses@gmail.com',
-        pass: process.env.MAILER_PASSWORD, 
+        pass: process.env.MAILER_PASSWORD,
       },
     });
   }
 
   async createLostPet(data: any) {
-    const pet = this.lostPetRepo.create({
-      ...data,
-      location: { type: 'Point', coordinates: [data.lng, data.lat] },
-    });
+    // Se guarda el objeto tal cual, asumiendo que data ya incluye la estructura correcta
+    const pet = this.lostPetRepo.create(data);
     return await this.lostPetRepo.save(pet);
   }
 
   async createFoundPet(data: any) {
-    const foundPet = this.foundPetRepo.create({
-      ...data,
-      location: { type: 'Point', coordinates: [data.lng, data.lat] },
-    });
+    // 1. Guardar la mascota encontrada
+    const foundPet = this.foundPetRepo.create(data);
     await this.foundPetRepo.save(foundPet);
 
+    // 2. Extraer coordenadas de manera segura del objeto GeoJSON
+    // Esto evita que lleguen nulas a la consulta SQL
+    const lng = data.location?.coordinates[0];
+    const lat = data.location?.coordinates[1];
+
+    // 3. Buscar coincidencias usando las coordenadas extraídas
     const matches = await this.lostPetRepo.query(`
       SELECT *,
         ST_X(location::geometry) AS lost_lng,
@@ -53,8 +55,9 @@ export class PetsService {
           500
         )
       ORDER BY distance ASC;
-    `, [data.lng, data.lat]);
+    `, [lng, lat]);
 
+    // 4. Enviar notificación si hubo match
     if (matches.length > 0) {
       for (const lostPet of matches) {
         await this.sendMatchEmail(lostPet, data);
@@ -119,7 +122,6 @@ export class PetsService {
       console.log(`Email sent to ${lostPet.owner_email}`);
     } catch (error) {
       console.error('Error sending email:', error.message);
-      // Don't throw error - email is optional
     }
   }
 }
